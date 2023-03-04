@@ -40,7 +40,7 @@ final class RepositoryModelTests: XCTestCase {
         
         // Act
         let owner = RepoOwner(id: 1, avatarUrl: avatarURL)
-        let repoItem = RepoItem(id: 1, owner: owner, htmlUrl: htmlURL)
+        let repoItem = Repository(id: 1, owner: owner, htmlUrl: htmlURL)
         
         // Assert
         XCTAssertEqual(repoItem.id, 1)
@@ -50,7 +50,7 @@ final class RepositoryModelTests: XCTestCase {
     
     /// Test nil values
     func test_repo_item_nil_values() {
-        let repoItem = RepoItem(id: 1, owner: nil, htmlUrl: nil)
+        let repoItem = Repository(id: 1, owner: nil, htmlUrl: nil)
         
         XCTAssertEqual(repoItem.id, 1)
         XCTAssertNil(repoItem.owner)
@@ -73,9 +73,9 @@ final class RepositoryModelTests: XCTestCase {
         let owner1 = RepoOwner(id: 1, avatarUrl: nil)
         let owner2 = RepoOwner(id: 3, avatarUrl: nil)
         
-        let repoItem = RepoItem(id: 1, owner: owner, htmlUrl: nil)
-        let repoItem1 = RepoItem(id: 1, owner: owner1, htmlUrl: nil)
-        let repoItem2 = RepoItem(id: 2, owner: owner2, htmlUrl: nil)
+        let repoItem = Repository(id: 1, owner: owner, htmlUrl: nil)
+        let repoItem1 = Repository(id: 1, owner: owner1, htmlUrl: nil)
+        let repoItem2 = Repository(id: 2, owner: owner2, htmlUrl: nil)
         
         XCTAssertEqual(repoItem, repoItem1)
         XCTAssertNotEqual(repoItem, repoItem2)
@@ -89,7 +89,7 @@ final class RepositoryModelTests: XCTestCase {
         
         // Act
         let owner = RepoOwner(id: 1, avatarUrl: avatarURL)
-        let repoItem = RepoItem(id: 1, owner: owner, htmlUrl: htmlURL)
+        let repoItem = RepoItem(repository: Repository(id: 1, owner: owner, htmlUrl: htmlURL))
         let repoModel = RepositoryModel(totalCount: 1, isIncomplete: true, items: [repoItem])
         
         // Assert

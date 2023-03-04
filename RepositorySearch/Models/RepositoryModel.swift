@@ -10,11 +10,11 @@ import Foundation
 // MARK: - Repository
 // For this demo we are considering that repo item id will be unique so comparing only ids
 struct RepositoryModel: Codable {
-    let totalCount: Int?
-    let incompleteResults: Bool?
+    let totalCount: Int
+    let incompleteResults: Bool
     let items: [RepoItem]?
     
-    init(totalCount: Int? = 0, isIncomplete: Bool? = false, items: [RepoItem]? = []) {
+    init(totalCount: Int = 0, isIncomplete: Bool = false, items: [RepoItem]? = []) {
         self.totalCount = totalCount
         self.incompleteResults = isIncomplete
         self.items = items
@@ -22,14 +22,25 @@ struct RepositoryModel: Codable {
 }
 
 // MARK: - Item
-struct RepoItem: Codable, Identifiable {
+struct RepoItem: Codable {
+    let repository: Repository
+}
+
+extension RepoItem: Hashable {
+    static func == (lhs: RepoItem, rhs: RepoItem) -> Bool {
+        return lhs.repository.id == rhs.repository.id
+    }
+}
+
+// MARK: - Repository
+struct Repository: Codable {
     let id: Int
     let owner: RepoOwner?
     let htmlUrl: String?
 }
 
-extension RepoItem: Hashable {
-    static func == (lhs: RepoItem, rhs: RepoItem) -> Bool {
+extension Repository: Hashable {
+    static func == (lhs: Repository, rhs: Repository) -> Bool {
         return lhs.id == rhs.id && lhs.owner?.id == rhs.owner?.id
     }
 }
