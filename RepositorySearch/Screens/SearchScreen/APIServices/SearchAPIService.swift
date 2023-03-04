@@ -8,9 +8,11 @@
 import Foundation
 
 protocol RepoSearchAPIUseCase {
-    
+    func fetchRepoList()
 }
 
-class SearchAPIService: RepoSearchAPIUseCase {
-    
+class SearchAPIService: APIServcie, RepoSearchAPIUseCase {
+    func fetchRepoList() {
+        
+    }
 }
