@@ -81,7 +81,7 @@ extension APICall {
     /// URLSession requires a request. This create request for given inputs
     /// - Parameter baseURL: Domain or base path of the API service
     /// - Returns: URLRequest
-    func urlRequest(baseURL: String) throws -> URLRequest {
+    func urlRequest() throws -> URLRequest {
         guard let url = fullURL else {
             throw APIError.invalidURL
         }
