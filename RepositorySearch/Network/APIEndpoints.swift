@@ -74,7 +74,7 @@ extension APICall {
     }
     
     /// Scheme
-    private var scheme: String {
+    var scheme: String {
         "https"
     }
     

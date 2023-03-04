@@ -18,9 +18,14 @@ class APIServcie {
         return jsonDecoder
     }()
     
-  init(session: URLSession = .shared) {
-    self.session = session
-  }
+    static var commonHeaders: [String: String]? {
+        ["Content-Type": "application/json; charset=utf-8",
+         "User-Agent": ""]
+    }
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
 }
 
 extension APIServcie {
