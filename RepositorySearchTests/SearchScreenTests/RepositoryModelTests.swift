@@ -16,20 +16,20 @@ final class RepositoryModelTests: XCTestCase {
         let avatarURL = "https://www.example.com"
         
         // Act
-        let owner = RepoOwner(id: 1, avatarURL: avatarURL)
+        let owner = RepoOwner(id: 1, avatarUrl: avatarURL)
         
         // Assert
         XCTAssertEqual(owner.id, 1)
-        XCTAssertEqual(owner.avatarURL, avatarURL)
+        XCTAssertEqual(owner.avatarUrl, avatarURL)
     }
     
     /// Test if nil values are handled
     /// If someone changes by mistake nil or required this will fail
     func test_owner_model_nil_values() {
-        let owner = RepoOwner(id: 1, avatarURL: nil)
+        let owner = RepoOwner(id: 1, avatarUrl: nil)
         
         XCTAssertEqual(owner.id, 1)
-        XCTAssertNil(owner.avatarURL)
+        XCTAssertNil(owner.avatarUrl)
     }
     
     /// Test with all values
@@ -39,29 +39,29 @@ final class RepositoryModelTests: XCTestCase {
         let htmlURL = "https://www.html.com"
         
         // Act
-        let owner = RepoOwner(id: 1, avatarURL: avatarURL)
-        let repoItem = RepoItem(id: 1, owner: owner, htmlURL: htmlURL)
+        let owner = RepoOwner(id: 1, avatarUrl: avatarURL)
+        let repoItem = RepoItem(id: 1, owner: owner, htmlUrl: htmlURL)
         
         // Assert
         XCTAssertEqual(repoItem.id, 1)
         XCTAssertNotNil(repoItem.owner)
-        XCTAssertNotNil(repoItem.htmlURL)
+        XCTAssertNotNil(repoItem.htmlUrl)
     }
     
     /// Test nil values
     func test_repo_item_nil_values() {
-        let repoItem = RepoItem(id: 1, owner: nil, htmlURL: nil)
+        let repoItem = RepoItem(id: 1, owner: nil, htmlUrl: nil)
         
         XCTAssertEqual(repoItem.id, 1)
         XCTAssertNil(repoItem.owner)
-        XCTAssertNil(repoItem.htmlURL)
+        XCTAssertNil(repoItem.htmlUrl)
     }
     
     /// Test Owner equatable
     func test_repo_owner_equatable() {
-        let owner = RepoOwner(id: 1, avatarURL: nil)
-        let owner1 = RepoOwner(id: 1, avatarURL: nil)
-        let owner2 = RepoOwner(id: 3, avatarURL: nil)
+        let owner = RepoOwner(id: 1, avatarUrl: nil)
+        let owner1 = RepoOwner(id: 1, avatarUrl: nil)
+        let owner2 = RepoOwner(id: 3, avatarUrl: nil)
         
         XCTAssertEqual(owner, owner1)
         XCTAssertNotEqual(owner, owner2)
@@ -69,13 +69,13 @@ final class RepositoryModelTests: XCTestCase {
     
     /// Test RepoItem equatable
     func test_repo_item_equatable() {
-        let owner = RepoOwner(id: 1, avatarURL: nil)
-        let owner1 = RepoOwner(id: 1, avatarURL: nil)
-        let owner2 = RepoOwner(id: 3, avatarURL: nil)
+        let owner = RepoOwner(id: 1, avatarUrl: nil)
+        let owner1 = RepoOwner(id: 1, avatarUrl: nil)
+        let owner2 = RepoOwner(id: 3, avatarUrl: nil)
         
-        let repoItem = RepoItem(id: 1, owner: owner, htmlURL: nil)
-        let repoItem1 = RepoItem(id: 1, owner: owner1, htmlURL: nil)
-        let repoItem2 = RepoItem(id: 2, owner: owner2, htmlURL: nil)
+        let repoItem = RepoItem(id: 1, owner: owner, htmlUrl: nil)
+        let repoItem1 = RepoItem(id: 1, owner: owner1, htmlUrl: nil)
+        let repoItem2 = RepoItem(id: 2, owner: owner2, htmlUrl: nil)
         
         XCTAssertEqual(repoItem, repoItem1)
         XCTAssertNotEqual(repoItem, repoItem2)
@@ -88,8 +88,8 @@ final class RepositoryModelTests: XCTestCase {
         let htmlURL = "https://www.html.com"
         
         // Act
-        let owner = RepoOwner(id: 1, avatarURL: avatarURL)
-        let repoItem = RepoItem(id: 1, owner: owner, htmlURL: htmlURL)
+        let owner = RepoOwner(id: 1, avatarUrl: avatarURL)
+        let repoItem = RepoItem(id: 1, owner: owner, htmlUrl: htmlURL)
         let repoModel = RepositoryModel(totalCount: 1, isIncomplete: true, items: [repoItem])
         
         // Assert

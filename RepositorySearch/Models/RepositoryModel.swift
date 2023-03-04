@@ -25,7 +25,7 @@ struct RepositoryModel: Codable {
 struct RepoItem: Codable, Identifiable {
     let id: Int
     let owner: RepoOwner?
-    let htmlURL: String?
+    let htmlUrl: String?
 }
 
 extension RepoItem: Hashable {
@@ -37,7 +37,7 @@ extension RepoItem: Hashable {
 // MARK: - Owner
 struct RepoOwner: Codable {
     let id: Int
-    let avatarURL: String?
+    let avatarUrl: String?
 }
 
 extension RepoOwner: Hashable {
