@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - Repository
+// For this demo we are considering that repo item id will be unique so comparing only ids
 struct RepositoryModel: Codable {
     let totalCount: Int?
     let incompleteResults: Bool?
