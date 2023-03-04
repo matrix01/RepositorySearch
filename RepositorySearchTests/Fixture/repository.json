@@ -1,0 +1,16 @@
+{
+    "total_count": 7,
+    "incomplete_results": false,
+    "items": [
+        {
+            "repository": {
+                "id": 167174,
+                "html_url": "https://github.com/jquery/jquery/blob/825ac3773694e0cd23ee74895fd5aeb535b27da4/src/attributes/classes.js",
+                "owner": {
+                    "id": 70142,
+                    "avatar_url": "https://0.gravatar.com/avatar/6906f317a4733f4379b06c32229ef02f?d=https%3A%2F%2Fidenticons.github.com%2Ff426f04f2f9813718fb806b30e0093de.png"
+                }
+            }
+        }
+    ]
+}

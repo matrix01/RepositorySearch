@@ -34,10 +34,10 @@ extension APIServcie {
     ///   - endpoint: APICall endpoints
     ///   - decoder: accept JSONDecoder, otherwise uses the default one
     /// - Returns: mapped codable items or throws APIError
-    private func fetch<T: Decodable>(endpoint: APICall, decoder: JSONDecoder = APIServcie.decoder) async throws -> T {
+    func fetch<T: Decodable>(endpoint: APICall, decoder: JSONDecoder = APIServcie.decoder) async throws -> T {
         let request = try endpoint.urlRequest()
         let (data, response) = try await URLSession.shared.data(for: request)
-        return try parse(data: data, response: response)
+        return try parse(data: data, response: response, decoder: decoder)
     }
     
     
@@ -46,13 +46,13 @@ extension APIServcie {
     ///   - data: Data
     ///   - response: URLResponse
     /// - Returns: mapped codable items or throws APIError
-    private func parse<T: Decodable>(data: Data, response: URLResponse) throws -> T {
+    private func parse<T: Decodable>(data: Data, response: URLResponse, decoder: JSONDecoder) throws -> T {
         guard let code = (response as? HTTPURLResponse)?.statusCode else {
             throw APIError.unexpectedResponse
         }
         guard HTTPCodes.success.contains(code) else {
             throw APIError.httpCode(code)
         }
-        return try JSONDecoder().decode(T.self, from: data)
+        return try decoder.decode(T.self, from: data)
     }
 }

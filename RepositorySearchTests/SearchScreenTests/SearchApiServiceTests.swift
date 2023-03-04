@@ -10,13 +10,64 @@ import XCTest
 
 final class SearchApiServiceTests: XCTestCase {
 
-    let sut: SearchAPIService! = nil
-    
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    var sut: SearchAPIService! = nil
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+    }
+    
+    func test_fetch_repo_list_success() async {
+        let session = URLSession(mockResponder: RepositoryModel.MockDataResponder.self)
+        sut = SearchAPIService(session: session)
+        do {
+            let results = try await sut.fetchRepoList(for: .search)
+            XCTAssertEqual(results.totalCount, 7)
+            XCTAssertEqual(results.incompleteResults, false)
+            XCTAssertEqual(results.items?.count, 1)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func test_fetch_repo_list_error() async {
+        let session = URLSession(mockResponder: RepositoryModel.MockFailDataResponder.self)
+        sut = SearchAPIService(session: session)
+        do {
+            let _ = try await sut.fetchRepoList(for: .search)
+            XCTFail("test_fetch_repo_list_error should return error")
+        } catch {
+            let errorMessage = (error as? APIError)?.errorDescription
+            XCTAssertEqual(errorMessage, "Unexpected HTTP code: 404")
+        }
+    }
+}
+
+extension RepositoryModel {
+    enum MockDataResponder: MockURLResponder {
+        static func respond(to request: URLRequest) throws -> (Data, HTTPURLResponse?) {
+            guard let url = request.url else {
+                throw APIError.invalidURL
+            }
+            
+            guard let repoData = loadJson(fileName: "repository") else {
+                throw APIError.unexpectedResponse
+            }
+            let response = MockURLProtocol<MockDataResponder>.success(for: url)
+            return (repoData, response)
+        }
+    }
+    
+    enum MockFailDataResponder: MockURLResponder {
+        static func respond(to request: URLRequest) throws -> (Data, HTTPURLResponse?) {
+            guard let url = request.url else {
+                throw APIError.invalidURL
+            }
+            
+            guard let repoData = loadJson(fileName: "repository") else {
+                throw APIError.unexpectedResponse
+            }
+            let response = MockURLProtocol<MockDataResponder>.failure(for: url)
+            return (repoData, response)
+        }
     }
 }

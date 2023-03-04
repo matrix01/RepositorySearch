@@ -7,13 +7,17 @@
 
 import Foundation
 
-struct SearchAPICall: APICall {
+enum SearchAPICall: APICall {
+    case search
+    
     var host: String {
         "api.github.com"
     }
     
     var path: String {
-        "/" + "search/repositories"
+        switch self {
+        case .search: return "/" + "search/repositories"
+        }
     }
     
     var method: HTTPMethod {
