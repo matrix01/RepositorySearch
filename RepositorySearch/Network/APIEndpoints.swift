@@ -19,9 +19,25 @@ enum HTTPMethod: String {
 /// API Endpoints protocol
 /// Requirements provider for api requests
 protocol APICall {
+    
+    /// - Parameter host: domain for the api service
+    /// Keeping it flex for when the app uses different domains in different module
+    var host: String { get }
+
+    /// - Parameter path: path for  a specific api
     var path: String { get }
+    
+    /// - Parameter method: GET / POST / PATH / DELETE
     var method: HTTPMethod { get }
+    
+    /// - Parameter headers: Headers for URLRequests
+    /// Example: ["Accept": "application/json"]
     var headers: [String: String]? { get }
+
+    /// - Parameter params: Query parameters for api
+    var params: [URLQueryItem] { get }
+    
+    /// URL request body
     func body() throws -> Data?
 }
 
@@ -47,12 +63,26 @@ extension APIError: LocalizedError {
 
 
 extension APICall {
+    /// Generated URL from the service requirements
+    private var fullURL: URL? {
+        var urlComponents = URLComponents()
+        urlComponents.host = host
+        urlComponents.scheme = scheme
+        urlComponents.path = path
+        urlComponents.queryItems = params
+        return urlComponents.url
+    }
+    
+    /// Scheme
+    private var scheme: String {
+        "https"
+    }
     
     /// URLSession requires a request. This create request for given inputs
     /// - Parameter baseURL: Domain or base path of the API service
     /// - Returns: URLRequest
     func urlRequest(baseURL: String) throws -> URLRequest {
-        guard let url = URL(string: baseURL + path) else {
+        guard let url = fullURL else {
             throw APIError.invalidURL
         }
         var request = URLRequest(url: url)
