@@ -28,11 +28,12 @@ class SearchViewModel: ObservableObject {
     
     /// Init method for search view model
     /// - Parameter apiService: Repo api service
+    /// Init subscription for searchText which observes the chagnes from navigation search bar
     init(apiService: RepoSearchAPIUseCase = SearchAPIService()) {
         self.apiService = apiService
         
         $searchText
-            .debounce(for: .seconds(1), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(200), scheduler: RunLoop.main)
             .removeDuplicates()
             .sink {[weak self] text in
             
@@ -60,5 +61,12 @@ class SearchViewModel: ObservableObject {
     func fetchRepos(query: String) async throws {
         let searchResult = try await apiService.fetchRepoList(for: .search(query: query))
         searchResults = searchResult.items ?? []
+    }
+    
+    func makeViewModel(item: RepoItem) -> DetailViewModel? {
+        guard let htmlURL = item.htmlUrl, let avatarURLString = item.owner?.avatarUrl, let avatarURL = URL(string: avatarURLString) else {
+            return nil
+        }
+        return DetailViewModel(htmlURL: htmlURL, avatarURL: avatarURL)
     }
 }

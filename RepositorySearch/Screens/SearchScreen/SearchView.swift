@@ -13,10 +13,24 @@ struct SearchView: View {
     var body: some View {
         NavigationView {
             List(viewModel.searchResults, id: \.self) { result in
-                Text(result.htmlUrl ?? "")
+                NavigationLink {
+                    detailScreen(repoItem: result)
+                } label: {
+                    Text(result.htmlUrl ?? "")
+                        .font(.headline)
+                }
             }
             .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("Search")
+        }
+    }
+    
+    @ViewBuilder
+    private func detailScreen(repoItem: RepoItem) -> some View {
+        if let detailViewModel = viewModel.makeViewModel(item: repoItem) {
+            DetailView(viewModel: detailViewModel)
+        } else {
+            EmptyView()
         }
     }
 }
