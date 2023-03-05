@@ -8,7 +8,7 @@
 import Foundation
 
 enum SearchAPICall: APICall {
-    case search
+    case search(query: String)
     
     var host: String {
         "api.github.com"
@@ -29,7 +29,10 @@ enum SearchAPICall: APICall {
     }
     
     var params: [URLQueryItem] {
-        []
+        switch self {
+        case .search(let query):
+            return [URLQueryItem(name: "q", value: query)]
+        }
     }
     
     func body() throws -> Data? {

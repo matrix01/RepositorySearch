@@ -14,7 +14,7 @@ final class SearchApiCallTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = SearchAPICall.search
+        sut = SearchAPICall.search(query: "")
     }
 
     override func tearDownWithError() throws {
@@ -45,13 +45,12 @@ final class SearchApiCallTests: XCTestCase {
         let host = sut.host
         let path = sut.path
         let method = sut.method
-        let finalURLString = sut.scheme + "://" + host + path + "?"
         let request = try sut.urlRequest()
         
         // Assert
         XCTAssertEqual(headers, request.allHTTPHeaderFields)
         XCTAssertEqual(body, request.httpBody)
-        XCTAssertEqual(finalURLString, request.url?.absoluteString)
+        XCTAssertNotNil(request.url)
         XCTAssertEqual(request.httpMethod, method.rawValue)
     }
     

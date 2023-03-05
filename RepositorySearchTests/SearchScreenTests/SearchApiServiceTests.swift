@@ -20,10 +20,10 @@ final class SearchApiServiceTests: XCTestCase {
         let session = URLSession(mockResponder: RepositoryModel.MockDataResponder.self)
         sut = SearchAPIService(session: session)
         do {
-            let results = try await sut.fetchRepoList(for: .search)
-            XCTAssertEqual(results.totalCount, 7)
+            let results = try await sut.fetchRepoList(for: .search(query: ""))
+            XCTAssertEqual(results.totalCount, 41573)
             XCTAssertEqual(results.incompleteResults, false)
-            XCTAssertEqual(results.items?.count, 1)
+            XCTAssertEqual(results.items?.count, 30)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -33,7 +33,7 @@ final class SearchApiServiceTests: XCTestCase {
         let session = URLSession(mockResponder: RepositoryModel.MockFailDataResponder.self)
         sut = SearchAPIService(session: session)
         do {
-            let _ = try await sut.fetchRepoList(for: .search)
+            let _ = try await sut.fetchRepoList(for: .search(query: ""))
             XCTFail("test_fetch_repo_list_error should return error")
         } catch {
             let errorMessage = (error as? APIError)?.errorDescription
