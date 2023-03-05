@@ -21,26 +21,15 @@ struct RepositoryModel: Codable {
     }
 }
 
-// MARK: - Item
-struct RepoItem: Codable {
-    let repository: Repository
-}
-
-extension RepoItem: Hashable {
-    static func == (lhs: RepoItem, rhs: RepoItem) -> Bool {
-        return lhs.repository.id == rhs.repository.id
-    }
-}
-
 // MARK: - Repository
-struct Repository: Codable {
+struct RepoItem: Codable {
     let id: Int
     let owner: RepoOwner?
     let htmlUrl: String?
 }
 
-extension Repository: Hashable {
-    static func == (lhs: Repository, rhs: Repository) -> Bool {
+extension RepoItem: Hashable {
+    static func == (lhs: RepoItem, rhs: RepoItem) -> Bool {
         return lhs.id == rhs.id && lhs.owner?.id == rhs.owner?.id
     }
 }
