@@ -5,15 +5,32 @@
 //  Created by Matrix on 2023/03/05.
 //
 
+import Combine
 import XCTest
+@testable import RepositorySearch
 
 final class SearchViewModelTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func test_search_view_model_fetchRepos_list_success() {
+        let session = URLSession(mockResponder: RepositoryModel.MockDataResponder.self)
+        let service = SearchAPIService(session: session)
+        let sut = SearchViewModel(apiService: service)
+        
+        sut.fetch(query: "")
+        XCTAssertEqual(sut.searchResults.count, 0)
+        
+        Task {
+            try? await sut.fetchRepos(query: "hello")
+            XCTAssertEqual(sut.searchResults.count, 30)
+        }
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func test_search_view_model_fetch_list_success() {
+        let session = URLSession(mockResponder: RepositoryModel.MockDataResponder.self)
+        let service = SearchAPIService(session: session)
+        let sut = SearchViewModel(apiService: service)
+        
+        sut.fetch(query: "abcd")
+        XCTAssertEqual(sut.searchResults.count, 0)
     }
 }

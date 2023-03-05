@@ -42,8 +42,6 @@ final class SearchApiCallTests: XCTestCase {
         // Arrange
         let headers = sut.headers
         let body = try sut.body()
-        let host = sut.host
-        let path = sut.path
         let method = sut.method
         let request = try sut.urlRequest()
         
