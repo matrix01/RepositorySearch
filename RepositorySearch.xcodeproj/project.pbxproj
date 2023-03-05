@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		660BD64129B3A10D008DB526 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660BD64029B3A10D008DB526 /* SearchViewModelTests.swift */; };
 		6615F9F029B2688D00ED07D3 /* RepositorySearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6615F9EF29B2688D00ED07D3 /* RepositorySearchApp.swift */; };
 		6615F9F429B2688E00ED07D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6615F9F329B2688E00ED07D3 /* Assets.xcassets */; };
 		6615F9F829B2688E00ED07D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6615F9F729B2688E00ED07D3 /* Preview Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		660BD64029B3A10D008DB526 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		6615F9EC29B2688D00ED07D3 /* RepositorySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepositorySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6615F9EF29B2688D00ED07D3 /* RepositorySearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchApp.swift; sourceTree = "<group>"; };
 		6615F9F329B2688E00ED07D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				6615FA3229B3053D00ED07D3 /* SearchApiCallTests.swift */,
 				6615FA3629B30FFD00ED07D3 /* SearchApiServiceTests.swift */,
 				6615FA3A29B311FC00ED07D3 /* RepositoryModelTests.swift */,
+				660BD64029B3A10D008DB526 /* SearchViewModelTests.swift */,
 			);
 			path = SearchScreenTests;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			files = (
 				6615FA3729B30FFE00ED07D3 /* SearchApiServiceTests.swift in Sources */,
 				6615FA3B29B311FC00ED07D3 /* RepositoryModelTests.swift in Sources */,
+				660BD64129B3A10D008DB526 /* SearchViewModelTests.swift in Sources */,
 				6615FA3329B3053D00ED07D3 /* SearchApiCallTests.swift in Sources */,
 				6615FA4129B34C2E00ED07D3 /* MockingURLProtocol.swift in Sources */,
 				6615FA0229B2688E00ED07D3 /* RepositorySearchTests.swift in Sources */,

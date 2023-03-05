@@ -13,6 +13,6 @@ protocol RepoSearchAPIUseCase {
 
 class SearchAPIService: APIServcie, RepoSearchAPIUseCase {
     func fetchRepoList(for endPoint: SearchAPICall) async throws -> RepositoryModel {
-        try await fetch(endpoint: endPoint)
+        return try await fetch(endpoint: endPoint)
     }
 }
