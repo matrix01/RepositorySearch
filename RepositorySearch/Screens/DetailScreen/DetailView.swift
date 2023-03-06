@@ -9,12 +9,14 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var viewModel: DetailViewModel
+    
     var body: some View {
         VStack {
             itemView
                 .padding()
             Spacer()
         }
+        .navigationTitle("Detail")
     }
     
     @ViewBuilder

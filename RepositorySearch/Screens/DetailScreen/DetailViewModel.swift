@@ -9,8 +9,8 @@ import Combine
 import Foundation
 
 class DetailViewModel: ObservableObject {
-    var htmlURL: String
-    var avatarURL: URL
+    private(set) var htmlURL: String
+    private(set) var avatarURL: URL
     
     init(htmlURL: String, avatarURL: URL) {
         self.htmlURL = htmlURL
