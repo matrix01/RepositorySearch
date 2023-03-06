@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct EmptyView: View {
+    var message: String
+    
     var body: some View {
-        Text("Nothing to show!")
+        VStack {
+            Spacer()
+            Text(message)
+            Spacer()
+        }
     }
 }
 
 struct EmptyView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyView()
+        EmptyView(message: "Nothing to show")
     }
 }

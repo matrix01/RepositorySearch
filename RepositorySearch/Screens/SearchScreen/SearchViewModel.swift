@@ -7,8 +7,12 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 class SearchViewModel: ObservableObject {
+    /// Loading status
+    @Published var isLoading: Bool = false
+    
     /// Search input for UI search bar binding
     @Published var searchText: String = ""
     
@@ -21,6 +25,7 @@ class SearchViewModel: ObservableObject {
     /// collection of cancellable
     var cancellables = Set<AnyCancellable>()
     
+    @State var downloadTask: Task<(), Never>?
     
     deinit {
         cancellables.forEach { $0.cancel() }
@@ -49,21 +54,25 @@ class SearchViewModel: ObservableObject {
             searchResults = []
             return
         }
-        Task {
+        downloadTask = Task {
             try? await fetchRepos(query: query)
         }
     }
-    
     
     /// Fetch api results from api use cases
     /// - Parameter query: search query from search bar
     @MainActor
     func fetchRepos(query: String) async throws {
+        searchResults = []
+        isLoading = true
+        
         let searchResult = try await apiService.fetchRepoList(for: .search(query: query))
         searchResults = searchResult.items ?? []
+        isLoading = false
     }
     
     func makeViewModel(item: RepoItem) -> DetailViewModel? {
+        downloadTask?.cancel()
         guard let htmlURL = item.htmlUrl, let avatarURLString = item.owner?.avatarUrl, let avatarURL = URL(string: avatarURLString) else {
             return nil
         }
