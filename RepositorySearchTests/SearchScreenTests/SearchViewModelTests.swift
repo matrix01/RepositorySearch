@@ -50,6 +50,5 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertNotNil(detailModel)
         XCTAssertEqual(detailModel?.avatarURL, URL(string: avatarURL))
         XCTAssertEqual(detailModel?.htmlURL, htmlURL)
-        
     }
 }

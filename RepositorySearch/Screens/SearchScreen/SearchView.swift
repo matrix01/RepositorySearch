@@ -15,6 +15,7 @@ struct SearchView: View {
             VStack {
                 if viewModel.isLoading {
                     progressView
+                        .accessibilityIdentifier("ProgressView")
                 }
                 if viewModel.searchResults.isEmpty && !viewModel.isLoading {
                     EmptyView(message: "Start typing to see results...")
@@ -30,6 +31,7 @@ struct SearchView: View {
         }
     }
     
+    /// View to show view is loading
     @ViewBuilder
     var progressView: some View {
         HStack(alignment: .center, spacing: 10) {
@@ -38,6 +40,7 @@ struct SearchView: View {
         }
     }
     
+    /// Row View for github repository items
     @ViewBuilder
     func rowItem(repoItem: RepoItem) -> some View {
         NavigationLink {
@@ -48,6 +51,7 @@ struct SearchView: View {
         }
     }
     
+    /// Detail screen builder. on error it shows empty screen
     @ViewBuilder
     private func detailScreen(repoItem: RepoItem) -> some View {
         if let detailViewModel = viewModel.makeViewModel(item: repoItem) {
@@ -58,8 +62,10 @@ struct SearchView: View {
     }
 }
 
+#if DEBUG
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(viewModel: SearchViewModel())
     }
 }
+#endif

@@ -11,6 +11,7 @@
 		660BD64629B451E2008DB526 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660BD64529B451E2008DB526 /* DetailView.swift */; };
 		660BD64829B451F2008DB526 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660BD64729B451F2008DB526 /* DetailViewModel.swift */; };
 		660BD64A29B456C0008DB526 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660BD64929B456C0008DB526 /* EmptyView.swift */; };
+		660BD64C29B61C46008DB526 /* DetailViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660BD64B29B61C46008DB526 /* DetailViewUITests.swift */; };
 		6615F9F029B2688D00ED07D3 /* RepositorySearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6615F9EF29B2688D00ED07D3 /* RepositorySearchApp.swift */; };
 		6615F9F429B2688E00ED07D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6615F9F329B2688E00ED07D3 /* Assets.xcassets */; };
 		6615F9F829B2688E00ED07D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6615F9F729B2688E00ED07D3 /* Preview Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		660BD64529B451E2008DB526 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		660BD64729B451F2008DB526 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		660BD64929B456C0008DB526 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		660BD64B29B61C46008DB526 /* DetailViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewUITests.swift; sourceTree = "<group>"; };
 		6615F9EC29B2688D00ED07D3 /* RepositorySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepositorySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6615F9EF29B2688D00ED07D3 /* RepositorySearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchApp.swift; sourceTree = "<group>"; };
 		6615F9F329B2688E00ED07D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				6615FA0B29B2688E00ED07D3 /* RepositorySearchUITests.swift */,
 				6615FA0D29B2688E00ED07D3 /* RepositorySearchUITestsLaunchTests.swift */,
+				660BD64B29B61C46008DB526 /* DetailViewUITests.swift */,
 			);
 			path = RepositorySearchUITests;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6615FA0E29B2688E00ED07D3 /* RepositorySearchUITestsLaunchTests.swift in Sources */,
+				660BD64C29B61C46008DB526 /* DetailViewUITests.swift in Sources */,
 				6615FA0C29B2688E00ED07D3 /* RepositorySearchUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

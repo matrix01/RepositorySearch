@@ -35,6 +35,7 @@ struct DetailView: View {
                 .padding()
             Spacer()
         }
+        .accessibilityIdentifier("repoUrlText")
     }
     
     @ViewBuilder
@@ -50,6 +51,7 @@ struct DetailView: View {
                 ProgressView()
             }
         )
+        .accessibilityIdentifier("repoItemImageView")
     }
 }
 

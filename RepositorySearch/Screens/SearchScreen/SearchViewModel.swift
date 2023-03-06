@@ -71,6 +71,7 @@ class SearchViewModel: ObservableObject {
         isLoading = false
     }
     
+    /// Cteates the viewmodel for Detail screen and cancel current pending task if there is one
     func makeViewModel(item: RepoItem) -> DetailViewModel? {
         downloadTask?.cancel()
         guard let htmlURL = item.htmlUrl, let avatarURLString = item.owner?.avatarUrl, let avatarURL = URL(string: avatarURLString) else {

@@ -19,8 +19,10 @@ struct EmptyView: View {
     }
 }
 
+#if DEBUG
 struct EmptyView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyView(message: "Nothing to show")
     }
 }
+#endif

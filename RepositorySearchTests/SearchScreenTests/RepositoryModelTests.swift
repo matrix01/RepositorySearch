@@ -65,6 +65,7 @@ final class RepositoryModelTests: XCTestCase {
         
         XCTAssertEqual(owner, owner1)
         XCTAssertNotEqual(owner, owner2)
+        XCTAssertTrue(owner == owner1)
     }
     
     /// Test RepoItem equatable
