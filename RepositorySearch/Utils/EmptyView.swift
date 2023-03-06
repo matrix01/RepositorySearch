@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view to show appropriate messgage when there's an error or empty screen
 struct EmptyView: View {
     var message: String
     
