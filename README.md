@@ -21,7 +21,7 @@ The project is based on `MVVM` architecture with a navigator to navigate through
 
 Folder Structure:
 
-RepositorySearch
+### RepositorySearch
 <ul>
   <li>Network</li>
   <li>Screens</li>
@@ -45,14 +45,14 @@ RepositorySearch
   <li>SupportingFiles</li>
 </ul>
 
-RepositorySearchTests
+### RepositorySearchTests
 <ul>
   <li>Fixture</li>
   <li>Mock</li>
   <li>SearchScreenTests</li>
 </ul>
 
-RepositorySearchUITests
+### RepositorySearchUITests
 <ul>
   <li>RepositorySearchUITests</li>
   <li>DetailViewUITests</li>
